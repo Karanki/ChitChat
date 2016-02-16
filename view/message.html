@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    
+    <body>
+        <input type="text" id="username" placeholder="Username"/>
+        <input type="text" id="password" placeholder="Password"/>
+        <button type="submit" id="sub">Login</button>
+        
+        <input type="text" id="message" placeholder="Type a msg"/>
+        <button type="msg_sub" id="mes_sub">Submit Message</button>
+        
+    </body>
+    <script>
+    $(document).ready(function(){
+        
+        var user_id = -1;
+        
+        document.getElementById("sub").onclick = function(){
+        //connect and insert
+        $.ajax({
+            url:"../cont/usercont.php",
+            type:"post",
+            dataType:"json",
+            data: {
+                method:"login",
+                username: document.getElementById("username").value,
+                password:document.getElementById("password").value                       
+            },
+            success:function(resp){
+                alert("Loggedin!");
+                console.log(resp);
+                user_id = resp[0].id;
+            }
+            });
+        }
+        
+        document.getElementById("mes_sub").onclick = function(){
+        //connect and insert
+        $.ajax({
+            url:"../cont/message.php",
+            type:"post",
+            dataType:"html",
+            data: {
+                method:"insert",
+                message: document.getElementById("message").value,
+                user_id: user_id
+            },
+            success:function(resp){
+                alert("INSERT!");
+            }
+            });
+        }
+        
+        
+        //VIEWING PASSWORDS
+        document.getElementById("mes_sub").onclick = function(){
+            $.ajax({
+                url:"../cont/message.php",
+                dataType:"json",
+                data:{
+                    method:"inser"
+                },
+                type:"POST",
+                success:function(resp){
+                    console.log(resp);
+                }
+            });
+        }
+    });
+        
+    </script>
+</html>

@@ -1,0 +1,193 @@
+
+
+body {
+	font-family: 'Open Sans Condensed', sans-serif;
+	background-color: #00cc99;
+}
+
+
+/* ========LOGIN PAGE======== */
+
+
+.logo img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;
+	height: 100px;
+	margin: 50px auto;
+}
+
+
+input, button{
+	display: block;
+	margin: 0 auto;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 100%;
+}
+
+input {
+	width: 200px;
+	padding: 5px;
+}
+
+button {
+	width: 100px;
+	height: 30px;
+}
+
+.login-button, .edit-profile-button, .add-friend-button {
+	border: transparent;
+	background-color: #ff5050;
+	color: #fff;
+	font-weight: 700;
+}
+
+.signup-button {
+	border: 1px solid #fff;
+	background-color: transparent;
+	color: #fff;
+}
+
+hr {
+	width: 200px;
+	margin-top: 50px;
+}
+
+h5 {
+	text-align: center;
+}
+
+
+
+/* ========PROFILE PAGE======== */
+
+nav {
+	
+	width: 100%;
+	background-color: rgba(0,0,0,.65);
+	position: relative;
+	margin-bottom: 50px;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+nav ul li {
+	display: inline;
+	float: left;
+	width: 33.33%;
+}
+
+nav ul li a {
+	display: block;
+	color: #fff;
+	padding: 20px;
+	text-decoration: none;
+	text-align: center;
+
+}
+
+nav ul li a:visited {
+	color: #fff;
+}
+
+nav ul li a:hover {
+	background-color: #6d0911;
+}
+
+
+.profile-nav {
+	border-bottom: 3px solid #fff;
+}
+
+.profile-pic img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	width: 150px;
+	height: auto;
+	clear: both;
+}
+
+h3 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+
+
+/* ========FRIENDS PAGE======== */
+
+.friends-nav {
+	border-bottom: 3px solid #fff;
+}
+
+.friend-list {
+    display: block;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.friend {
+    display: block;
+    width: 250px;
+    height: 250px;
+	margin: 70px auto;
+	background-color: #fff;
+}
+
+.friend-pic {
+	display:block;
+	width: auto;
+	height: 160px;
+    margin: 3% auto;
+}
+
+.add-friend {
+	display: block;
+	float: right;
+	width: 100px;
+	height: auto;
+}
+
+div div.add-friend-button {
+	float: right;
+}
+
+
+/* ========CHAT PAGE======== */
+
+.chat-nav {
+	border-bottom: 3px solid #fff;
+}
+
+.wrapper {
+	width: 70%;
+}
+
+.chatbox {
+	background-color: #fff;
+	border-radius: 10px;
+}
+
+.like-icon {
+	width: 5%;
+	height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
