@@ -9,8 +9,9 @@
         <input type="text" id="password" placeholder="Password"/>
         <button type="submit" id="sub">Login</button>
         
-        <input type="text" id="message" placeholder="Type a msg"/>
-        <button type="msg_sub" id="mes_sub">Submit Message</button>
+        <input id="message" placeholder="Type a msg"/>
+        <button id="mes_sub">Submit Message</button>
+        
         
     </body>
     <script>
@@ -22,18 +23,18 @@
         //connect and insert
         $.ajax({
             url:"../cont/usercont.php",
-            type:"post",
+            type:"POST",
             dataType:"json",
             data: {
                 method:"login",
                 username: document.getElementById("username").value,
-                password:document.getElementById("password").value                       
+                password: document.getElementById("password").value                       
             },
             success:function(resp){
                 alert("Loggedin!");
                 console.log(resp);
                 user_id = resp[0].id;
-            }
+               }
             });
         }
         
@@ -41,34 +42,44 @@
         //connect and insert
         $.ajax({
             url:"../cont/message.php",
-            type:"post",
-            dataType:"html",
+            type:"POST",
+            dataType:"json",
             data: {
                 method:"insert",
-                message: document.getElementById("message").value,
-                user_id: user_id
+                user_id: user_id,
+                message: document.getElementById("message").value
+               
             },
             success:function(resp){
                 alert("INSERT!");
-            }
-            });
-        }
-        
-        
-        //VIEWING PASSWORDS
-        document.getElementById("mes_sub").onclick = function(){
-            $.ajax({
-                url:"../cont/message.php",
-                dataType:"json",
-                data:{
-                    method:"inser"
-                },
-                type:"POST",
-                success:function(resp){
-                    console.log(resp);
+                console.log(resp);
+                user_id = resp[0].id;
+             }
+          });
+            
+                    $.ajax({
+            url:"../cont/message.php",
+            type:"POST",
+            dataType:"json",
+            data: {
+                method:"getall"
+               
+               
+            },
+            success:function(resp){
+                console.log(resp);
+                for (var i = 0; i<resp.length; i++){
+                var h3 = document.createElement("h3");
+                    h3.innerHTML = resp[i].username +":"+resp[i].message;
+                    document.body.appendChild(h3);
                 }
-            });
-        }
+             }
+          });
+        } 
+         
+        //connect and insert
+       
+         
     });
         
     </script>
