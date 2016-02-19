@@ -12,7 +12,7 @@
     function get_messages(){
         //read the users from the db users table
         global $db;
-        $query = "SELECT * FROM messages
+        $query = "SELECT messages.message, users.username FROM messages
         LEFT JOIN users ON users.id = messages.user_id";
         
         $result = $db->query($query);

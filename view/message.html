@@ -8,10 +8,9 @@
         <input type="text" id="username" placeholder="Username"/>
         <input type="text" id="password" placeholder="Password"/>
         <button type="submit" id="sub">Login</button>
-        
         <input id="message" placeholder="Type a msg"/>
         <button id="mes_sub">Submit Message</button>
-        
+        <div id="msgs"></div>
         
     </body>
     <script>
@@ -59,8 +58,8 @@
             
                     $.ajax({
             url:"../cont/message.php",
-            type:"POST",
             dataType:"json",
+            type:"POST",
             data: {
                 method:"getall"
                
@@ -68,10 +67,14 @@
             },
             success:function(resp){
                 console.log(resp);
+                document.getElementById("msgs").innerHTML="";
                 for (var i = 0; i<resp.length; i++){
                 var h3 = document.createElement("h3");
+                var dlt = document.createElement("button");
                     h3.innerHTML = resp[i].username +":"+resp[i].message;
-                    document.body.appendChild(h3);
+                    dlt.innerHTML = "DELETE";
+                    document.getElementById("msgs").appendChild(h3);
+                    h3.appendChild(dlt);
                 }
              }
           });
