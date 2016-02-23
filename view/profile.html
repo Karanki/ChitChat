@@ -23,7 +23,52 @@
 
 	<button class="edit-profile-button">Edit Profile</button>
 
+   <form id='myForm'>
+    
+       <input type='file' id='myfile' multiple>Open File</input>
+    <button id='upload'>Upload</button>
+    </form>
+    
+    <script>
+    
+    var upload = document.getElementById("upload");
+    var files = document.getElementById("myfile");
+        
+        upload.onclick = function(e){
+            
+            e.preventDefault();
+            
+            //upload the files here using another form of Ajax
+            var formData = new FormData();
+            
+            var xhr = new XMLHttpRequest();
+            
+            var allfiles = files.files;
+            console.log(allfiles);
+            for(var i=0; i<allfiles.length; i++){
+                
+                //get individual file with var
+                var e_file = allfiles[i];
+                formData.append("images[]", e_file, e_file.name);
+                formData.append("message", "my post message");
+                
+                xhr.open("POST", "../model/upload.php", true);
+                xhr.onload = function(){
+                    
+                    if (xhr.status == 200){
+                        alert("Loaded Complete");
+                        
+                    
+                }
+            }
+                xhr.send(formData);
+        }
+         
+    }
+    
+    </script>
 
+    
 </body>
 
 </html>
