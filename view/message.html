@@ -5,8 +5,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     
     <body>
+<<<<<<< HEAD
         
        
+=======
+        <input type="text" id="username" placeholder="Username"/>
+        <input type="text" id="password" placeholder="Password"/>
+        <button type="submit" id="sub">Login</button>
+>>>>>>> 3e24f2a83c0cef37b263a43328db049d908c5f62
         <input id="message" placeholder="Type a msg"/>
         <button id="mes_sub">Submit Message</button>
         <div id="msgs"></div>
@@ -48,6 +54,7 @@
                
             },
             success:function(resp){
+<<<<<<< HEAD
                 document.getElementById("msgs").innerHTML="";
                 
                 var h3 = document.createElement("h3");
@@ -61,6 +68,17 @@
                     dlt.innerHTML = "DELETE";
                     h3.appendChild(dlt);
                    
+=======
+                console.log(resp);
+                document.getElementById("msgs").innerHTML="";
+                for (var i = 0; i<resp.length; i++){
+                var h3 = document.createElement("h3");
+                var dlt = document.createElement("button");
+                    h3.innerHTML = resp[i].username +":"+resp[i].message;
+                    dlt.innerHTML = "DELETE";
+                    document.getElementById("msgs").appendChild(h3);
+                    h3.appendChild(dlt);
+>>>>>>> 3e24f2a83c0cef37b263a43328db049d908c5f62
                 }
              }
           });
