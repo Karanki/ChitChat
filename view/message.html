@@ -5,9 +5,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     
     <body>
-        <input type="text" id="username" placeholder="Username"/>
-        <input type="text" id="password" placeholder="Password"/>
-        <button type="submit" id="sub">Login</button>
+        
+       
         <input id="message" placeholder="Type a msg"/>
         <button id="mes_sub">Submit Message</button>
         <div id="msgs"></div>
@@ -18,27 +17,10 @@
         
         var user_id = -1;
         
-        document.getElementById("sub").onclick = function(){
-        //connect and insert
-        $.ajax({
-            url:"../cont/usercont.php",
-            type:"POST",
-            dataType:"json",
-            data: {
-                method:"login",
-                username: document.getElementById("username").value,
-                password: document.getElementById("password").value                       
-            },
-            success:function(resp){
-                alert("Loggedin!");
-                console.log(resp);
-                user_id = resp[0].id;
-               }
-            });
-        }
-        
         document.getElementById("mes_sub").onclick = function(){
-        //connect and insert
+        var h3 = document.createElement("h3");
+        var dlt = document.createElement("button");
+            //connect and insert
         $.ajax({
             url:"../cont/message.php",
             type:"POST",
@@ -61,20 +43,24 @@
             dataType:"json",
             type:"POST",
             data: {
-                method:"getall"
-               
+                method:"getall",
+               user_id: user_id
                
             },
             success:function(resp){
-                console.log(resp);
                 document.getElementById("msgs").innerHTML="";
-                for (var i = 0; i<resp.length; i++){
+                
                 var h3 = document.createElement("h3");
                 var dlt = document.createElement("button");
+                
+                for (var i = 0; i<resp.length; i++){
                     h3.innerHTML = resp[i].username +":"+resp[i].message;
-                    dlt.innerHTML = "DELETE";
+                    var h3 = document.createElement("h3");
+                var dlt = document.createElement("button");
                     document.getElementById("msgs").appendChild(h3);
+                    dlt.innerHTML = "DELETE";
                     h3.appendChild(dlt);
+                   
                 }
              }
           });
@@ -82,7 +68,6 @@
          
         //connect and insert
        
-         
     });
         
     </script>

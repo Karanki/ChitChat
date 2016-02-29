@@ -31,12 +31,14 @@
     <script>
         $(document).ready(function() {
             
+            var user_id = -1;
+            
              document.getElementById("log").onclick = function() {
                 //connect and insert
                 $.ajax({
                     url: "../cont/usercont.php",
                     type: "POST",
-                    dataType: "html",
+                    dataType: "json",
                     data: {
                         method: "login",
                         username: document.getElementById("username").value,

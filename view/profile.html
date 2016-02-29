@@ -16,14 +16,59 @@
 	</nav>
 
 	<div class="profile-pic">
-		<img src="../img/mike.jpg">
+		<img src="../img/1/avatar.jpg">
 	</div>
 
 	<h3>Mike Wazowski</h3>
 
 	<button class="edit-profile-button">Edit Profile</button>
-
-
+    
+    <form id='myForm'>
+    
+        <input type = 'file' id='myfile' multiple>OPEN FILE </input>
+        <button id='upload'>UPLOAD</button>
+    
+    </form>
+  
 </body>
+
+<script>
+    
+    var upload = document.getElementById("upload");
+    var files = document.getElementById("myfile");
+        
+        upload.onclick = function(e){
+        
+            e.preventDefault();
+            //upload the files here using another form of ajax
+            var formData = new FormData();
+            
+            var xhr = new XMLHttpRequest();
+            var allfiles = files.files;
+            
+            console.log(allfiles);
+            for(var i=0; i<allfiles.length; i++){
+                
+                //get individual file with var
+                var e_file = allfiles[i];
+                
+                formData.append("images[]", e_file, e_file.name);
+                formData.append("message", "my post message");
+                
+                xhr.open("POST", "upload.php", true);
+                xhr.onload = function(){
+                if(xhr.status == 200){
+                    alert("loaded properly");
+                   }
+                
+                }
+             xhr.send(formData);
+                location.reload();
+            }
+        
+        }
+    
+    
+    </script>
 
 </html>

@@ -24,7 +24,11 @@
     }
 
     function delete_message(){
-        //remove a row o fuser from the db users table
+        global $db;
+        $query = "DELETE messages.message FROM messages";
+        
+        $result = $db->query($query);
+        echo json_encode($result->fetchAll());
     }
     
     
