@@ -1,6 +1,6 @@
 <?php 
 include("connect.php");
-
+session_start();
 function insert_user() {
     // insert info into the users table (register)
     global $db;
@@ -18,7 +18,15 @@ function get_user_by_username_password() {
     $query = "SELECT id FROM users WHERE username = '".$_POST['username']."' AND password = '".$_POST['password']."'";
     $result = $db->query($query);
     
-    echo json_encode($result->fetchAll());
+    $stuff=($result->fetchAll()[0]["id"]);
+    
+    if($stuff=="null"){
+        echo json_encode("no");
+    }else{
+        echo json_encode($stuff);
+        $_SESSION['id'] = $stuff;
+    }       
+    
 }
 
 function update_user(){

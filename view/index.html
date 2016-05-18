@@ -30,9 +30,7 @@
     
     <script>
         $(document).ready(function() {
-            
-            var user_id = -1;
-            
+                    
              document.getElementById("log").onclick = function() {
                 //connect and insert
                 $.ajax({
@@ -44,8 +42,17 @@
                         username: document.getElementById("username").value,
                         password: document.getElementById("password").value
                     },
-                    success: function(){
-                        location.href = "../view/profile.html";  
+                    success: function(e){
+                        console.log(e)
+                        //location.href = "../view/profile.html";
+                        if(e=="no"){
+                            alert("tryagin");
+                        }else{
+                            location.href = "../view/profile.html";
+                        }
+                    },
+                    error: function(e){
+                        alert("try agin");
                     }
                 });
             }  
@@ -62,10 +69,11 @@
                         password: document.getElementById("reg-pass").value
                     },
                     success: function(){
-                        location.href = "../view/profile.html";  
+                        //location.href = "../view/profile.html";  
                     }
                 });
             }
+            
         });
     </script>
 </body>
